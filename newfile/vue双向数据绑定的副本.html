@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="username" />
+		<br/>
+		<span id="yang"></span>
+		
+		<script type="text/javascript">
+			var obj = {};
+			Object.defineProperty(obj,'username',{
+				get:function(){
+					console.log("1211212");
+				},
+				set:function(val){
+					console.log("1211212");
+					document.getElementById("yang").innerText = val;
+					document.getElementById("username").value = val;
+				}
+			})
+			document.getElementById('username').addEventListener('keyup',function(event){
+				document.getElementById("yang").innerText = event.target.value;
+			})
+		</script>
+	</body>
+</html>
