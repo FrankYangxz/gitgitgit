@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			{padding: 0;margin: 0;}
+			/**.box1{background: red;width: 200px;height: 400px;float: left;}
+			.box2{background: yellow;height: 400px;margin: 0 210px;}
+			.box3{background: red;width: 200px;height: 400px;float: right;}*/
+			
+			.left,.right{width: 200px;height: 400px;position: absolute;top: 10px;background: red;}
+			.left{left: 0;}
+			.right{right: 0;}
+			.center{height: 400px;background: yellow;margin: 0 210px;}
+		</style>
+		
+	</head>
+	<body>
+		<!--<div class="box1">
+			2222222       左侧
+		</div>
+		<div class="box3">
+			44444444444   //右侧
+		</div>
+		<div class="box2">
+			33333333333    中间部分
+		</div>-->
+		
+		<div class="left">
+			1111
+		</div>
+		<div class="center">
+			2222
+		</div>
+		<div class="right">
+			3333
+		</div>
+		<ul id="list">
+			<li>111</li>
+			<li>222</li>
+			<li><span>1212121212</span><a>9999999</a></li>
+			<li>444</li>
+			<li>555</li>
+			<li>666</li>
+		</ul>
+		<script type="text/javascript">
+			var oList = document.getElementById('list');
+			oList.onclick = function(ev){
+				var oEvent = ev || event;
+				var oTarget = oEvent.target || oEvent.srcElement;
+//				var main = oTarget.innerHTML;
+				var main = oTarget.childNodes;
+				
+				console.log( main.innerText)
+			}
+			
+			function firstUpperCase(str) {
+			  return str.toLowerCase().replace(/^\S/g,function($1){
+			  	return $1.toUpperCase();
+			  });
+			}
+			
+			var arr = new Array(6)
+			arr[0] = "10"
+			arr[1] = "5"
+			arr[2] = "40"
+			arr[3] = "25"
+			arr[4] = "1000"
+			arr[5] = "1" ;
+			
+			function sortNumber(a, b){
+			    return b - a
+			}
+			function sortArry(arr){
+				return arr.sort( sortNumber );
+			}
+			
+			 console.log( sortArry(arr) ) ;
+		</script>
+		
+	</body>
+</html>

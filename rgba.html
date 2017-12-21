@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>背景半透明rgba最佳实践</title>
+    <style>
+    	body { background: url(http://ww4.sinaimg.cn/cmw205/90f78f62jw1eafnlnk7cqj20q00yon2w.jpg) no-repeat 50% 0;}
+		.demo {
+		  width: 300px;
+		  height: 300px;
+		  line-height: 100px;
+		  margin: 20px auto;
+		  border: 1px solid #000;
+		  text-align: center;
+		  color: green;
+		}
+		 
+		.demo1 {
+		  background:rgba(0, 0, 0, .3);
+		}
+		 
+		.demo2 {
+		  background:rgba(0, 0, 0, .3);
+		  filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#4c000000', EndColorStr='#4c000000');
+		}
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="demo demo1">
+      	<a href="http://www.css88.com/demo/hex_color/">转换工具</a>
+      	<div style="width: 250px;height: 50px;background: #FFF;text-align: center;line-height: 50px;">888888</div>
+      </div>
+      <!--<div class="demo demo2"><a href="http://www.css88.com/demo/hex_color/">转换工具</a></div>-->
+    </div>  
+  </body>
+</html>

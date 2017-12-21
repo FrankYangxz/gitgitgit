@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			//构造函数
+			function animal(){
+				this.xihuan = 'dog'
+				this.name = 'lili';
+				this.age = 2;
+				this.fun = function (){
+					console.log( this.xihuan )	
+				}
+			}
+			//原型模式
+			function Cat(){}
+			Cat.prototype.name = 'cat';
+			Cat.prototype.love = 'fish';
+			Cat.prototype.fun = function(){
+				console.log(this.name)
+			}
+			//原型lian继承、、、、、、、、、、、、、、、、、、、、、、、、原型lian继承、、、、、、、、、、、、、、、
+			
+			function Person(){
+				this.xihuan = 'pig'
+				this.name = 'yangxz';
+				this.love = function(){
+					console.log( this.xihuan )
+				}
+			}
+			Person.prototype.lover = function(){
+				console.log( '宝宝' );
+			}
+			
+			function other(){
+				this.losa = 'folwer';
+				this.name = 'yyyyyyy';
+				this.fun = function(){
+					console.log( this.name )
+				}
+			}
+			//正确写法
+//			other.prototype = new Person();
+//			other.prototype.adress = function(){
+//				console.log( '北京' )
+//			}
+			console.log( typeof other.prototype )
+			//错误写法
+//			other.prototype.adress = function(){
+//				console.log( '北京' )
+//			}
+//			other.prototype = new Person();
+//			var dddddd  = new other();
+//			dddddd.adress()
+			
+
+			//缺点：
+			//1.通过原型实现继承的时候，原型实际上会变成另一个类型的实例，于是原来的实例属性就变成了现在的原型属性了。即第二个实例会受到第一个实例的影响
+			//2.没有办法在不影响所有对象的情况下，给超类的构造函数传递参数
+
+		//构造函数继承、、、、、、、、、、、、、、、、、、、、、、、、构造函数继承、、、、、、、、、、、、构造函数继承、、、
+			function Super(name) {
+			    this.color = ['red', 'blue'];
+			    this.name = name;
+			    this.sayName = function() {
+			        console.log(this.name);
+			    };
+			}
+			Super.prototype.say = function() {
+			    console.log('not seen');
+			}
+			
+			function Sub(name2) {
+			    //继承了Super,在子类型构造函数的内部调用超类型的构造函数,从而执行了Super()中定义的初始化代码
+			    Super.call(this, name2); //可以在子类型的构造函数里面给超类传递参数
+			}
+			
+			var instance = new Sub('codetker'); //实例之间不冲突，拥有自己的属性
+//			console.log(instance.color);
+//			console.log(instance.name);
+//			instance.sayName();
+//			instance.say(); //not a function
+  
+//			function asdf(){
+//				this.name = '443'
+//			}
+//			function aaadd(){
+//				for (var i=0;i<10;i++) {
+//					console.log( i )
+//					setTimeout(function(){
+//						console.log(i)
+//					},1000)
+//					
+//				}
+//			}
+//			aaadd()
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

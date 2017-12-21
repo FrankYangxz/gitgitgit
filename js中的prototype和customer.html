@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			function a(n){
+			    this.b = n;
+			    this.sun = function(){
+			    		console.log( this.b )
+			    }
+			}
+			a.prototype.add = function(){
+				console.log('22222')
+			}
+			a.prototype.age = 18;
+			var obj = new a();
+			var f = {'name':'yang'};
+			var fm = 'String';
+			var fm1 = [];
+			
+			console.log( typeof a  )
+//			console.log(typeof obj.prototype);//undefine
+//			console.log(typeof a.prototype);//object
+			
+			
+			
+		</script>
+		
+		
+	</body>
+</html>

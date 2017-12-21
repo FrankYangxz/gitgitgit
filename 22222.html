@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		<script type="text/javascript">
+			
+			function Animal() {  
+			    this.name = 'Animal';
+			}  
+			  
+			function Cat() {  
+			  	this.name = 'cat';
+			  	this._superName = Cat.prototype
+			  	this.showName1 = function(){
+			  		console.log(this.name)
+			  	}
+			  	this.showName2 = function(){
+			  		console.log(this.name)
+			  	}
+			  	this.showName3 = function(){
+			  		console.log(  this._superName.name + "shi de " + this.name )
+			  	}
+			}  
+			
+			Cat.prototype = new Animal()
+			var cat = new Cat();
+//			console.log(cat instanceof Animal);   //true  
+			cat.showName1();     //"Cat"  
+			cat.showName2.call( Cat.prototype )
+			cat.showName3();    //"Animal" => "Cat"
+			
+			//闭包问题
+//			for (var i = 0; i < 5; i++) {
+//				(function(i){
+//					setTimeout( function timer() {
+//				      console.log(i);
+//				  	}, 1000 );
+//				})(i)
+//			}
+			//闭包   let使的i仅仅只对当前{}起作用    块儿级作用域
+//			for (let i = 0; i < 5; i++) {
+//				setTimeout( function timer() {
+//			      console.log(i);
+//			  	}, 1000 );
+//			}
+			//递归
+			var arr = [[1, 2, 2], [3, 4, 5, 5], [6, 7, 8, 9, [11, 12, [12, 13, [14]]]], 10,'1'];  
+			var newArray = [];  
+			function getArray(arr){
+				arr.forEach(function(e){
+					if ( typeof e === 'object' ) {
+						return getArray(e)
+					} else{
+						newArray.push(e)
+					}
+				})
+			}
+			getArray(arr);  //  获取数据
+			console.log( newArray )
+			//数组去重  
+			//法：1
+			Array.prototype.distinc = function(){
+				return this.reduce(function(oArry1,val){
+					if ( oArry1.indexOf( val ) < 0) {
+						oArry1.push( val )
+					} 
+					return oArry1
+				},[])
+			}
+//			var quchong1 = newArray.distinc();
+//			console.log(  quchong1 instanceof Array )
+			//法：2
+			Array.prototype.qchong=function(){
+				var arrNew = [];
+				for ( var i=0;i<this.length;i++ ) {
+					if (arrNew.indexOf(this[i]) < 0 ) {
+						arrNew.push(i)
+					} 
+				}
+				return arrNew;
+			}
+			var quchong2 = newArray.qchong();
+			console.log(quchong2)
+			//法：3
+			Array.prototype.qc3=function(){
+				var hash = {};
+				var arr2 = [];
+				var item;
+				var type = '';
+				for ( var i=0;i<this.length;i++ ){
+					item = this[i];
+					type = Object.prototype.toString.call(item);
+					if (  !hash[item + type] ) {
+						hash[item + type] = true;
+						arr2.push(item);
+					} 
+				}
+				return arr2;
+			}
+			var quchong3 = newArray.qc3();
+			console.log(quchong3)
+			//法4：
+			Array.prototype.qc4=function(){
+				var arr3 = [];
+				for (var i=0;i<this.length;i++) {
+					if ( this.indexOf (this[i]) === i ) {
+						arr3.push(this[i])
+					}
+				}
+				return arr3;
+			}
+			var quchong4 = newArray.qc4();
+			console.log(quchong4)
+			// 排序
+			function paixu(a,b){
+				return a-b;
+			}
+			var paixuiList = quchong4.sort(paixu);
+			console.log( paixuiList )
+			
+			var obj = {  
+			    name: " jsCoder",  
+			    skill: ["css3", "html5", "es6", "react", "angular"],  
+			    say: function() {  
+			        for (let i = 0, len = this.skill.length; i < len; i++) {  
+			                setTimeout(function() {  
+			                    console.log("No." + i + obj.name);  
+			                    console.log(obj.skill[i]);  
+			                    console.log('--------------------------');  
+			                }, 100);  
+			        }  
+			    }  
+			};  
+			obj.say()
+			
+		</script>
+	</body>
+</html>

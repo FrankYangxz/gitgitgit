@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script src="js/jquery-1.12.3.js" type="text/javascript" charset="utf-8"></script>
+	<body>
+		<input id="inputField" type="text" size="12"/>
+		<button id="Button1">333333</button>
+		<script type="text/javascript">
+			var s = 3 + 2 + '5';
+			console.log( s )
+			console.log( typeof s )
+			var aaa = [1,2,5,3,30,4,8];
+			function sum(a,b){
+				return b+a
+			}
+			console.log(aaa.reduce(sum))
+			
+			var sar = [1,2,3,4,5,6,7];
+			var [...y] = sar;
+			function asd(...sarww){
+				var tol = 0;
+				for ( var i of sarww  ) {
+					tol += i
+				}
+				console.log( tol )
+			}
+			asd(...y);
+			$(document).ready(function(){
+				$('#Button1').click(function(){
+					alert($('#inputField').attr('value'));
+				})
+			})
+			
+		
+			function Checking(amount) {
+				this.balance = amount; // 属性
+				this.dddd = function(){
+					console.log( balance )
+				}
+			}
+			var ss = new Checking("777777");
+//			ss.dddd();
+			var sentence = "the quick brown fox jumped over the lazy dog";
+			console.log(  sentence.split(' ,') )
+//			var nums = [1,2,3,7,8,9];
+//			var newElements = [4,5,6];
+//			nums.splice(3,1,newElements);	
+			var nums = [1,2,3,7,8,9];
+			nums.splice(3,0,4,5,6);
+			
+			console.log(  );
+			function concat(accumulatedString, item) {
+			    return  item - accumulatedString  ;
+			}
+			var sentence = [1,2,10,3].sort(concat);
+			console.log( 5%3 );
+			
+			var a1 = new Array ()  
+			a1["name"] = 312;
+			a1["sex"] = "man";
+			a1['age'] = function(){
+				return 18;
+			}
+			var a = {n:1};
+			var b = a;
+			a.x = a = {n:2};
+			console.log(a);
+			console.log(b);
+			
+			
+			function Foo() {  
+			    getName = function () {  
+			        alert(1);  
+			    };  
+			    return this;  
+			}  
+			Foo.getName = function () {  
+			    alert(2);  
+			};  
+			Foo.prototype.getName = function () {  
+			    alert(3);  
+			};  
+			var getName = function () {  
+			    alert(4);  
+			};  
+			function getName() {  
+			    alert(5);  
+			}  
+//			Foo.getName();   //2
+//			getName();       //4
+//			Foo().getName();   //1
+//			getName();      // 1
+//			new Foo.getName();   //2
+//			new Foo().getName();   //3
+//			new new Foo().getName();  //3
+			function name(){
+				console.log(this)
+			}
+		
+			name()
+			
+			 y = 'global';  
+			function test(x){  
+			    console.log(y);  
+			    if(x){  
+			        var y = 'local';  
+			    }  
+			    return y;  
+			}  
+			console.log(test(true)); 
+			 
+			 //索引
+			  var a = {n:1};
+			  var b = a;
+			  a.x = a = {n:2};
+			  console.log(a.x); 
+			  console.log(b.x); 
+			
+			
+			
+		</script>
+	</body>
+</html>

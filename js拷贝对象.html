@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var a = {'name':'yang','age':25};
+			var b = {};
+			for ( var key in a ) {
+				b[key] = a[key]
+			}
+			console.log(b);
+			
+			var c = JSON.parse( JSON.stringify(a) )
+			console.log(c)
+			
+		</script>
+		
+		
+	</body>
+</html>

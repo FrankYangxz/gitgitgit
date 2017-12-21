@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			//http://blog.csdn.net/McDullBro/article/details/52960304
+			function Foo() {  
+			    getName = function () {  
+			        console.log(1);  
+			    };  
+			    return this;  
+			}  
+			Foo.getName = function () {  
+			    console.log(2);  
+			};  
+			Foo.prototype.getName = function () {  
+			    console.log(3);  
+			};  
+			var getName = function () {  
+			    console.log(4);  
+			};  
+			function getName() {  
+			    console.log(5);  
+			}
+			
+			Foo.getName();  
+			getName();  
+			Foo().getName();  
+			getName();  
+			new Foo.getName();  
+			new Foo().getName();  
+			new new Foo().getName(); 
+			
+//			编写一个javscript函数 fn，该函数有一个参数 n（数字类型），其返回值是一个数组，
+//			该数组内是 n 个随机且不重复的整数，且整数取值范围是 [2, 32]。
+			function oArry (n){
+				this.minAge = 2;
+				this.maxAge = 32;
+				this.n = n;
+			}
+			//  一般方法
+//			oArry.prototype.gott = function(){
+//				var nn = this.n;
+//				if (  nn < 0 || typeof nn !== 'number' || nn % 1 !== 0 ) {
+//					return null;
+//				}
+//				var newAry = [];
+//				var item = function(){
+//					return Math.floor( (Math.random()*31) + 2 )   //随机数
+//			    }
+//				function getArry (){
+//					while( newAry.length < nn ){
+//						var newItem = item();
+//						if( newAry.indexOf(newItem) < 0){
+//							newAry.push(newItem);
+//						}
+//					}
+//				}
+//				getArry ();
+//				return newAry;
+//			}
+			//递归法
+			oArry.prototype.gott = function(){
+				var nn = this.n;
+				if (  nn < 0 || typeof nn !== 'number' || nn % 1 !== 0 ) {
+					return null;
+				}
+				var newAry = [];
+				var item = function(){
+					return Math.floor( (Math.random()*31) + 2 )   //随机数
+			    }
+				function getArry (){
+					if( newAry.length < nn ){
+						var newItem = item();
+						if( newAry.indexOf(newItem) < 0){
+							newAry.push(newItem);
+						}
+						getArry()
+					}
+				}
+				getArry();
+				return newAry;
+			}
+			var dddd = new oArry(5);
+			console.log( dddd.gott() )
+
+
+			
+			
+		</script>
+	</body>
+</html>
